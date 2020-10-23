@@ -67,6 +67,7 @@
 				D0E5DCC425415C8400D695B0 /* AppDelegate.swift */,
 				D0E5DCC625415C8400D695B0 /* SceneDelegate.swift */,
 				D0E5DCC825415C8400D695B0 /* ViewController.swift */,
+				D0E5DD062541654900D695B0 /* Image.xcassets */,
 				D0E5DCD925415CFA00D695B0 /* RangeSlider */,
 				D0E5DCCA25415C8400D695B0 /* Main.storyboard */,
 				D0E5DCCD25415C8900D695B0 /* Assets.xcassets */,
@@ -82,7 +83,6 @@
 				D0E5DCFC25415FBA00D695B0 /* RangeSlider.swift */,
 				D0E5DCFF25415FE000D695B0 /* RangeSliderThumbLayer.swift */,
 				D0E5DD0225415FF200D695B0 /* RangeSliderTrackLayer.swift */,
-				D0E5DD062541654900D695B0 /* Image.xcassets */,
 			);
 			path = RangeSlider;
 			sourceTree = "<group>";
