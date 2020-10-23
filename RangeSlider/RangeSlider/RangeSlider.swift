@@ -8,49 +8,49 @@
 import Foundation
 import UIKit
 
-class RangeSlider: UIControl {
+public class RangeSlider: UIControl {
     private let lowerThumb = RangeSliderThumbLayer()
     private let upperThumb = RangeSliderThumbLayer()
     private let trackLayer = RangeSliderTrackLayer()
     
-    var thumbImage: UIImage = #imageLiteral(resourceName: "icon_thumb") {
+    public var thumbImage: UIImage = #imageLiteral(resourceName: "icon_thumb") {
         didSet {
             lowerThumb.setNeedsDisplay()
             upperThumb.setNeedsDisplay()
         }
     }
     
-    var trackTintColor: UIColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1) {
+    public var trackTintColor: UIColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1) {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    var trackSelectedColor: UIColor = #colorLiteral(red: 0.9921568627, green: 0.2039215686, blue: 0.2196078431, alpha: 1) {
+    public var trackSelectedColor: UIColor = #colorLiteral(red: 0.9921568627, green: 0.2039215686, blue: 0.2196078431, alpha: 1) {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    var maxValue: Float = 99 {
+    public var maxValue: Float = 99 {
         didSet {
             updateLayerFrame()
         }
     }
     
-    var minValue: Float = 18 {
+    public var minValue: Float = 18 {
         didSet {
             updateLayerFrame()
         }
     }
     
-    var lowerValue: Float = 18 {
+    public var lowerValue: Float = 18 {
         didSet {
             updateLayerFrame()
         }
     }
     
-    var upperValue: Float = 99 {
+    public var upperValue: Float = 99 {
         didSet {
             updateLayerFrame()
         }
@@ -95,13 +95,13 @@ class RangeSlider: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var frame: CGRect {
+    public override var frame: CGRect {
         didSet {
             updateLayerFrame()
         }
     }
     
-    override func layoutSublayers(of layer: CALayer) {
+    public override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         updateLayerFrame()
     }
@@ -130,7 +130,7 @@ extension RangeSlider {
         return min(max(value, lower), upper)
     }
     
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         preLocation = touch.location(in: self)
         if lowerThumb.frame.contains(preLocation) && upperThumb.frame.contains(preLocation) {
             if lowerValue < (maxValue + minValue) / 2 {
@@ -148,7 +148,7 @@ extension RangeSlider {
         return lowerThumb.isHighlighted || upperThumb.isHighlighted
     }
     
-    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
         let rangeLocation = Float(location.x - preLocation.x)
         let resultValue = (maxValue - minValue) * rangeLocation / Float(bounds.width - 20)
@@ -162,7 +162,7 @@ extension RangeSlider {
         return true
     }
     
-    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+    public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         lowerThumb.isHighlighted = false
         upperThumb.isHighlighted = false
     }
