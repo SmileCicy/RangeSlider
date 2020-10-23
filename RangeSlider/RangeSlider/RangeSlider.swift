@@ -130,11 +130,9 @@ public class RangeSlider: UIControl {
         trackLayer.frame = trackFrame
         trackLayer.setNeedsDisplay()
         
-        print(lowerPosition)
         lowerThumb.frame = CGRect(x: lowerPosition + 10 - bounds.height / 2, y: 0, width: bounds.height, height: bounds.height)
         lowerThumb.setNeedsDisplay()
         
-        print(upperPosition)
         upperThumb.frame = CGRect(x: upperPosition + 10 - bounds.height / 2, y: 0, width: bounds.height, height: bounds.height)
         upperThumb.setNeedsDisplay()
         
