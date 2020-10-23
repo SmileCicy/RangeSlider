@@ -22,10 +22,9 @@ class ViewController: UIViewController {
     }
     
     @objc private func sliderChange(sender: RangeSlider) {
-//        print("sender.lower == \(sender.lowerValue)")
-//        print("sender.upper == \(sender.upperValue)")
+        print("sender.lower == \(sender.lowerValue)")
+        print("sender.upper == \(sender.upperValue)")
     }
-
 
 }
 
