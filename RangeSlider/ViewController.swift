@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(slider)
         view.addSubview(oriSlider)
+        oriSlider.setThumbImage(RangeSlider.defaultImage(), for: .normal)
+        oriSlider.minimumTrackTintColor = UIColor.red
         slider.addTarget(self, action: #selector(sliderChange(sender:)), for: .valueChanged)
         // Do any additional setup after loading the view.
     }

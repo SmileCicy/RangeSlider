@@ -13,10 +13,27 @@ public class RangeSlider: UIControl {
     private let upperThumb = RangeSliderThumbLayer()
     private let trackLayer = RangeSliderTrackLayer()
     
-    public var thumbImage: UIImage = #imageLiteral(resourceName: "icon_thumb") {
+    public var thumbImage: UIImage = defaultImage() {
         didSet {
             lowerThumb.setNeedsDisplay()
             upperThumb.setNeedsDisplay()
+        }
+    }
+    
+    public static func defaultImage(_ color: UIColor = UIColor.red) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 20, height: 20), false, UIScreen.main.scale)
+        let path = UIBezierPath(roundedRect: CGRect(x: 1.5, y: 1.5, width: 17, height: 17), cornerRadius: 8.5)
+        UIColor.white.setFill()
+        path.fill()
+        path.lineWidth = 3
+        color.setStroke()
+        path.stroke()
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            return image
+        }else {
+            UIGraphicsEndImageContext()
+            return UIImage()
         }
     }
     
@@ -58,7 +75,7 @@ public class RangeSlider: UIControl {
     
     private var trackFrame: CGRect {
         get {
-            return bounds.insetBy(dx: 10, dy: bounds.height / 2 - 1.5)
+            return bounds.insetBy(dx: 10, dy: bounds.height / 2 - 2)
         }
     }
     
