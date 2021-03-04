@@ -16,7 +16,8 @@ class RangeSliderThumbLayer: CALayer {
         super.draw(in: ctx)
         guard let img = rangeSlider?.thumbImage else { return }
         UIGraphicsPushContext(ctx)
-        let rect = CGRect(x: bounds.width / 2 - 10, y: bounds.height / 2 - 10, width: 20, height: 20)
+        let size = img.size
+        let rect = CGRect(x: (bounds.width - size.width) / 2, y: (bounds.height - size.height) / 2 , width: size.width, height: size.height)
         img.draw(in: rect)
         UIGraphicsPopContext()
     }

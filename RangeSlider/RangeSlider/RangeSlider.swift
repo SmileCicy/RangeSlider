@@ -14,11 +14,16 @@ public class RangeSlider: UIControl {
     private let trackLayer = RangeSliderTrackLayer()
     
     public var thumbImage: UIImage = defaultImage() {
+        willSet {
+            thumbSize = newValue.size
+        }
         didSet {
             lowerThumb.setNeedsDisplay()
             upperThumb.setNeedsDisplay()
         }
     }
+    
+    private var thumbSize: CGSize = CGSize(width: 20, height: 20)
     
     public static func defaultImage(_ color: UIColor = UIColor.red) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 20, height: 20), false, UIScreen.main.scale)
@@ -75,7 +80,7 @@ public class RangeSlider: UIControl {
     
     private var trackFrame: CGRect {
         get {
-            return bounds.insetBy(dx: 10, dy: bounds.height / 2 - 2)
+            return bounds.insetBy(dx: (bounds.height - thumbSize.width) / 2, dy: bounds.height / 2 - 2)
         }
     }
     
@@ -130,10 +135,10 @@ public class RangeSlider: UIControl {
         trackLayer.frame = trackFrame
         trackLayer.setNeedsDisplay()
         
-        lowerThumb.frame = CGRect(x: lowerPosition + 10 - bounds.height / 2, y: 0, width: bounds.height, height: bounds.height)
+        lowerThumb.frame = CGRect(x: lowerPosition-(bounds.height - thumbSize.width)/2, y: 0, width: bounds.height, height: bounds.height)
         lowerThumb.setNeedsDisplay()
-        
-        upperThumb.frame = CGRect(x: upperPosition + 10 - bounds.height / 2, y: 0, width: bounds.height, height: bounds.height)
+
+        upperThumb.frame = CGRect(x: upperPosition-(bounds.height - thumbSize.width)/2, y: 0, width: bounds.height, height: bounds.height)
         upperThumb.setNeedsDisplay()
         
         CATransaction.commit()
