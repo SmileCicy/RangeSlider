@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "SCRangeSlider"
-  spec.version      = "0.0.7"
+  spec.version      = "0.0.8"
   spec.summary      = "Range slider for iOS."
   spec.description  = <<-DESC
   An easy to use range slider.
