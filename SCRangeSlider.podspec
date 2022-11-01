@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "SCRangeSlider"
-  spec.version      = "0.1.1"
+  spec.version      = "0.1.2"
   spec.summary      = "Range slider for iOS."
   spec.description  = <<-DESC
   An easy to use range slider.
@@ -20,6 +20,6 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/SmileCicy/RangeSlider.git", :tag => "#{spec.version}" }
 
-  spec.source_files  = "RangeSlider/RangeSlider/**/*.swift"
+  spec.source_files  = "RangeSlider/Sources/RangeSlider/**/*.swift"
 
 end
