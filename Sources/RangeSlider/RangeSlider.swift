@@ -166,7 +166,7 @@ extension RangeSlider {
     public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
         let rangeLocation = Float(location.x - preLocation.x)
-        let resultValue = (maxValue - minValue) * rangeLocation / Float(bounds.width - 20)
+        let resultValue = (maxValue - minValue) * rangeLocation / Float(bounds.width - thumbImage.size.width)
         preLocation = location
         if lowerThumb.isHighlighted {
             lowerValue = calculate(lowerValue + resultValue, lower: minValue, upper: upperValue - 1)
