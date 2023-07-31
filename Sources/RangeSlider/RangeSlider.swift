@@ -75,7 +75,7 @@ public class RangeSlider: UIControl {
     
     private var trackFrame: CGRect {
         get {
-            return bounds.insetBy(dx: 3, dy: bounds.height / 2 - 2)
+            return bounds.insetBy(dx: 3, dy: thumbImage.size.width / 2 - 2)
         }
     }
     
