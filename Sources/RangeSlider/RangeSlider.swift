@@ -75,7 +75,7 @@ public class RangeSlider: UIControl {
     
     private var trackFrame: CGRect {
         get {
-            return bounds.insetBy(dx: 3, dy: thumbImage.size.width / 2 - 2)
+            return bounds.insetBy(dx: 3, dy: bounds.height / 2 - 2)
         }
     }
     
@@ -130,10 +130,10 @@ public class RangeSlider: UIControl {
         trackLayer.frame = trackFrame
         trackLayer.setNeedsDisplay()
         
-        lowerThumb.frame = CGRect(x: lowerPosition-thumbImage.size.width/2+3, y: 0, width: thumbImage.size.width, height: thumbImage.size.width)
+        lowerThumb.frame = CGRect(x: lowerPosition-bounds.height/2+3, y: 0, width: bounds.height, height: bounds.height)
         lowerThumb.setNeedsDisplay()
 
-        upperThumb.frame = CGRect(x: upperPosition-thumbImage.size.width/2+3, y: 0, width: thumbImage.size.width, height: thumbImage.size.width)
+        upperThumb.frame = CGRect(x: upperPosition-bounds.height/2+3, y: 0, width: bounds.height, height: bounds.height)
         upperThumb.setNeedsDisplay()
         
         CATransaction.commit()
@@ -166,7 +166,7 @@ extension RangeSlider {
     public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
         let rangeLocation = Float(location.x - preLocation.x)
-        let resultValue = (maxValue - minValue) * rangeLocation / Float(bounds.width - thumbImage.size.width)
+        let resultValue = (maxValue - minValue) * rangeLocation / Float(bounds.width - bounds.height/2)
         preLocation = location
         if lowerThumb.isHighlighted {
             lowerValue = calculate(lowerValue + resultValue, lower: minValue, upper: upperValue - 1)
